@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-strict-di="" class="ng-scope">
+<head>
+    <title>Image Tagger Frontend</title>
+
+    <link rel="stylesheet" media="all" href="./css/style.css">
+    <link rel="stylesheet" media="all" href="./css/size-to-image.css">
+    <link rel="stylesheet" media="all" href="./css/image-tagger.css">
+
+    <script src="./js/vendor/angular.min.js"></script>
+    <script src="./js/vendor/jquery.min.js"></script>
+
+    <script src="./js/helpers/array.js"></script>
+    <script src="./js/helpers/size_to_image.js"></script>
+    <script src="./js/helpers/size_to_window.js"></script>
+    <script src="./js/helpers/string.js"></script>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/controllers/image_tagger.js"></script>
+</head>
+<body ng-controller="image_tagger_controller">
+<div class="image-tagger">
+    <h1>Image Tagger</h1>
+    <div class="canvas size-to-image-container size-to-window height-70">
+        <div class="size-to-image marker-container" ng-click="create_marker($event)">
+            <div class="marker" ng-repeat="marker in markers"
+                 ng-style="{left: {{marker.x - 33}} + 'px', top: {{marker.y - 105}} + 'px'}">
+                <img src="./img/marker.png"/>
+            </div>
+        </div>
+        <img class="size-to-image-target" src="./img/interior-01.jpg"/>
+    </div>
+    <table>
+        <tr ng-repeat="marker in markers">
+            <td>
+                Marker {{$index + 1}} [{{marker.x - 8 | number: 2}}, {{marker.y - 80 | number: 2}}]
+            </td>
+            <td>
+                <button ng-click="delete_marker(marker)">delete</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+body {
+  background-color: #fed;
+}
+
+.size-to-image-container {
+    position: relative;
+}
+
+.size-to-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: none;
+    z-index: 2;
+}
